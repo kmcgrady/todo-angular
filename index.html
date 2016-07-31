@@ -10,22 +10,21 @@
       <h1>My ToDo List</h1>
     </header>
     <main>
-      <div ng-controller="PeopleController as peopleCtrl">
-        <div ng-repeat="person in peopleCtrl.people">
+      <div ng-controller="PeopleCtrl as peopleList">
+        <div ng-repeat="person in peopleList.people">
           <h2>{{person.name}}</h2>
-          <ul ng-controller="TodoListController as todoListCtrl">
-            <li ng-repeat="todo in todoListCtrl.todos">
-              <input type="checkbox" ng-model="todo.completed"> <span ng-class="{ completed: todo.completed }">{{todo.text}}</span>
+          <ul ng-controller="TodoListCtrl as todoList">
+            <li ng-repeat="todo in todoList.todos">
+              <input type="checkbox" ng-model="todo.completed" ng-click="todoList.toggleCompleteTodo(todo)"> <span ng-class="{ completed: todo.completed }">{{todo.text}}</span>
             </li>
-            <li><input type="text" ng-model="todoListCtrl.todoToAdd"><a href="" ng-click="todoListCtrl.addTodo()">add</a></li>
+            <li><input type="text" ng-model="todoList.todoToAdd"><a href="" ng-click="todoList.addTodo()">add</a></li>
           </ul>
         </div>
         <div>
-          <input type="text" ng-model="peopleCtrl.nameToAdd"><a href="" ng-click="peopleCtrl.addPerson()">add person</a>
+          <input type="text" ng-model="peopleList.nameToAdd"><a href="" ng-click="peopleList.addPerson()">add person</a>
         </div>
       </div>
     </main>
-    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="controllers.js"></script>
